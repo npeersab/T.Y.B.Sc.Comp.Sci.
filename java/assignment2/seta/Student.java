@@ -27,22 +27,31 @@ class Student {
 		System.out.println(count + " objects created...");
 	}
 
-	public String toString() {
-		
-		return "Roll No : " + rollNo + "\nName : " + name + "\nPercentage : " + per;
-	}
+	public static void display(Student student[]) {
 
-		
+		System.out.println("\nStudent Details :");
+		for(int i = 0; i < 43; i++)
+			System.out.print('-');
+		System.out.printf("\n| Roll No. | %15s | Percentage |\n", "Name");
+		for(int i = 0; i < 43; i++)
+			System.out.print('-');
+		System.out.println();
+		for(int i = 0; i < count; i++)
+			System.out.printf("| %8d | %15s | %10.2f |\n", student[i].rollNo, student[i].name, student[i].per);
+		for(int i = 0; i < 43; i++)
+			System.out.print('-');
+		System.out.println();
+	}
 
 	public static void main(String args[]) {
 
-		boolean flag = true;
 		Scanner ip = new Scanner(System.in);
 		Student student[] = new Student[50];
+		int choice;
 
-		while(flag) {
+		do {
 			System.out.print("\n1.Add new Student\n2.View all students\n3.Exit\nEnter option : ");
-			int choice = ip.nextInt();
+			choice = ip.nextInt();
 		
 			switch(choice) {
 				case 1 :
@@ -57,14 +66,10 @@ class Student {
 					break;
 	
 				case 2 :
-					System.out.println("\nStudent Details");
-					for(int i = 0; i < Student.count; i++)
-						System.out.println(student[i]);
+					Student.display(student);
 					break;
 
-				case 3 :
-					flag = false;
 			}
-		}
-	}
-}
+		} while(choice != 3);
+	} // main
+} // Student
