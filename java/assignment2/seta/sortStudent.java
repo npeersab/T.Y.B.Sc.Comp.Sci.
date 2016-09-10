@@ -27,10 +27,6 @@ class Student {
 		System.out.println(count + " objects created...");
 	}
 
-	public String toString() {
-		
-		return "Roll No : " + rollNo + "\nName : " + name + "\nPercentage : " + per;
-	}
 
 	static void sortStudent(Student student[]) {
 	
@@ -41,6 +37,22 @@ class Student {
 					student[j] = student[j + 1];
 					student[j + 1] = temp;
 				}
+	}
+
+	public static void display(Student student[]) {
+
+		System.out.println("\nStudent Details :");
+		for(int i = 0; i < 43; i++)
+			System.out.print('-');
+		System.out.printf("\n| Roll No. | %15s | Percentage |\n", "Name");
+		for(int i = 0; i < 43; i++)
+			System.out.print('-');
+		System.out.println();
+		for(int i = 0; i < count; i++)
+			System.out.printf("| %8d | %15s | %10.2f |\n", student[i].rollNo, student[i].name, student[i].per);
+		for(int i = 0; i < 43; i++)
+			System.out.print('-');
+		System.out.println();
 	}
 	
 	public static void main(String args[]) {
@@ -66,9 +78,7 @@ class Student {
 					break;
 	
 				case 2 :
-					System.out.println("\nStudent Details");
-					for(int i = 0; i < Student.count; i++)
-						System.out.println(student[i]);
+					Student.display(student);
 					break;
 
 				case 3 :
