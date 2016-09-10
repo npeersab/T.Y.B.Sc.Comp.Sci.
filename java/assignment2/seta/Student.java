@@ -30,17 +30,19 @@ class Student {
 	public static void display(Student student[]) {
 
 		System.out.println("\nStudent Details :");
-		for(int i = 0; i < 43; i++)
-			System.out.print('-');
-		System.out.printf("\n| Roll No. | %15s | Percentage |\n", "Name");
-		for(int i = 0; i < 43; i++)
-			System.out.print('-');
-		System.out.println();
+		printline(43);
+		System.out.printf("| Roll No. | %15s | Percentage |\n", "Name");
+		printline(43);
 		for(int i = 0; i < count; i++)
 			System.out.printf("| %8d | %15s | %10.2f |\n", student[i].rollNo, student[i].name, student[i].per);
-		for(int i = 0; i < 43; i++)
-			System.out.print('-');
+		printline(43);
 		System.out.println();
+	}
+	
+	public static void printline(int n) {
+		for(int i = 0; i < n; i++)
+        	                System.out.print('-');
+                	System.out.println();
 	}
 
 	public static void main(String args[]) {

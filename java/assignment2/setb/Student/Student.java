@@ -53,9 +53,16 @@ class Student {
 		tyMarks = new TyMarks(php, java, oose, cn, syspro, tcs);
 	}
 
-	public String toString() {
-		
-		return "\nRoll no : " + rollNo + "\n" + "Name : " + name + "\n" + "Grade : " + getGrade();
+	public static void display(Student student[]) {
+
+		System.out.println("\nStudent Details :");
+		printline(34);
+		System.out.printf("| Roll No. | %10s |  Grade |\n", "Name");
+		printline(34);
+		for(int i = 0; i < student.length; i++)
+			System.out.printf("| %8d | %10s | %6s |\n", student[i].rollNo, student[i].name, student[i].getGrade());
+		printline(34);
+
 	}
 
 	String getGrade() {
@@ -73,14 +80,19 @@ class Student {
 		else
 			return "Fail";
 	}
-		
-		
 
+	public static void printline(int n) {
+
+		for(int i = 0; i < n; i++)
+			System.out.print('-');
+		System.out.println();
+	}
+		
 	public static void main(String args[]) {
 
 		Scanner ip = new Scanner(System.in);
 		
-		System.out.println("How many students : ");
+		System.out.print("How many students : ");
 		int n = ip.nextInt();
 
 		Student student[] = new Student[n];
@@ -100,16 +112,7 @@ class Student {
 			System.out.println("\nEnter TY MArks :");
 			student[i].setTYMarks();
 		}
-
-		System.out.println("\nResults");
-		for(int i = 0; i < n; i++)
-			System.out.println(student[i]);
-
-	
+		
+		Student.display(student);
 	}
-}
-
-
-		
-	
-		
+}		
