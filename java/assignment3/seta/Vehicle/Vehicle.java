@@ -58,7 +58,7 @@ abstract public class Vehicle {
 class LightMotorVehicle extends Vehicle {
 
 	private float mileage;
-
+	
 	public void accept() {
 
 		acceptVehicle();
