@@ -2,76 +2,136 @@ import java.util.Scanner;
 
 public abstract class Shape {
 
-	abstract public double calcArea();
-	abstract public double calcVolume();
-	abstract public void accept();
+	public final double pi = 3.142;
+
+	abstract void calc_area();
+	abstract void calc_volume();
 
 	public static void main(String args[]) {
+	
+		Scanner ip = new Scanner(System.in);
 
-		System.out.print("1.Sphere 
+		System.out.print("\n1.Sphere\n2.Cone\n3.Cylinder\n4.Box\nEnter Shape : ");
+		int choice = ip.nextInt();
+		Shape shape = null;
+		switch(choice) {
+			case 1 :
+				shape = new Sphere();
+				break;	
+			case 2 :
+				shape = new Cone();
+				break;
+			case 3 :
+				shape = new Cylinder();
+				break;
+			case 4 :
+				shape = new Box();
+				break;
+			default :
+				System.out.println("Invalid Shape....");
+		}
+		
+		shape.calc_area();
+		shape.calc_volume();
 	}
 }
 
 class Sphere extends Shape {
 
-	private double radius;
-	
-	public double calcArea() {
+	private int rad;
 
-		return 4 * 3.14 * radius * radius;
+	public Sphere() {
+
+		Scanner ip = new Scanner(System.in);
+		System.out.print("Enter radius : ");
+		rad = ip.nextInt();
 	}
 
-	public double calcVolume() {
-			
-		return (4 * 3.14 * radius * radius * radius) / 3;
+	public void calc_area() {
+
+		System.out.printf("Area : %.4f\n", 4 * pi * rad * rad);
 	}
 
-	public void accept
+	public void calc_volume() {
+		
+		System.out.printf("Volume : %.4f\n", (4 * pi * rad * rad * rad) / 3);
+	}
 }
 
 class Cone extends Shape {
 
+	private int rad, hei;
 
-	private double radius, height;
+	public Cone() {
 
-	public double calcArea() {
+		Scanner ip = new Scanner(System.in);
 
-		return 3.14 * radius * height;
+		System.out.print("Enter radius : ");
+		rad = ip.nextInt();
+		System.out.print("Enter height : ");
+		hei = ip.nextInt();
 	}
 
-	public double calcVolume() {
+	public void calc_area() {
+		
+		System.out.printf("Area : %.4f\n", pi * rad * hei);
+	}
 
-		return (3.14 * radius * radius * height) / 3;
+	public void calc_volume() {
+
+		System.out.printf("Volumee : %.4f\n", (pi * rad * rad * hei) / 3);
 	}
 }
 
 class Cylinder extends Shape {
+
+	private int rad, hei;
+
+	public Cylinder() {
 		
-	private double radius, height;
-
-	public double calcArea() {
-			
-		return 2 * 3.14 * radius * (radius + height); 
-	}
-
-	public double calcVolume() {
-
-		return 3.14 * radius * radius * height;
-	}
+		Scanner ip = new Scanner(System.in);
 	
+		System.out.print("Enter radius : ");
+		rad = ip.nextInt();	
+		System.out.print("Enter height : ");
+		hei = ip.nextInt();
+	}
+		
+	public void calc_area() {
+		
+		System.out.printf("Area : %.4f\n", 2 * pi * rad * (rad + hei));
+	}
+
+	public void calc_volume() {
+
+		System.out.printf("Volume : %.4f\n", pi * rad * rad * hei);
+	}
 }
 
 class Box extends Shape {
 
-	private double length, breadth, height;
+	private int len, bre, hei;
 
-	public double calcArea() {
+	public Box() {
+
+		Scanner ip = new Scanner(System.in);
 		
-		return 2 * (length * breadth + length * height + breadth * height);
-	}	
+		System.out.print("Enter length : ");
+		len = ip.nextInt();
+		System.out.print("Enter breadth : ");
+		bre = ip.nextInt();
+		System.out.print("Enter height : ");
+		hei = ip.nextInt();		
 
-	public double calcVolume() {
-
-		return length *  breadth * height;
 	}
-}	
+	
+	public void calc_area() {
+
+		System.out.printf("Suface Area : %.4f\n", 2 * (len * bre + len * hei + bre * hei));
+	}
+	
+	public void calc_volume() {
+
+		System.out.printf("Volume : %.4f\n", len * bre * hei);
+	}
+}
