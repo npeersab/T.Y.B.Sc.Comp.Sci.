@@ -176,13 +176,19 @@ public class Student extends JFrame implements ActionListener, ItemListener, Doc
 
 	public void addtHobbies(String studHobbies) {
 
-		this.studHobbies = studHobbies;
+		this.studHobbies = this.studHobbies.replace("---", "");
+		this.studHobbies += " " + studHobbies;
+		this.studHobbies = this.studHobbies.trim();
 		updateText();
 	}
 
 	public void removeHobbies(String studHobbies) {
 
 		this.studHobbies = this.studHobbies.replace(studHobbies, "");
+		this.studHobbies = this.studHobbies.trim();
+		if(this.studHobbies.length() == 0) {
+			this.studHobbies = "---";
+		}
 		updateText();
 	}
 
