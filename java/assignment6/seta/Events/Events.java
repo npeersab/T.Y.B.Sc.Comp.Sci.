@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JLabel;
 
-public class MouseEvent extends Applet implements MouseListener, KeyListener, MouseMotionListener {
+public class Event extends Applet implements MouseListener, KeyListener, MouseMotionListener {
 	
 
 	private static final long serialVersionUID = 1L;
