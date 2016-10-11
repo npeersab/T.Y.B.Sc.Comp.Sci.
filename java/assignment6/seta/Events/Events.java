@@ -8,11 +8,11 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JLabel;
 
-public class Events extends Applet implements MouseListener, KeyListener, MouseMotionListener {
+public class MouseEvent extends Applet implements MouseListener, KeyListener, MouseMotionListener {
 	
 
 	private static final long serialVersionUID = 1L;
-	private JLabel keyClicked, keyPressed, mousePosition, keyReleased, mouseLocation;
+	private JLabel keyClicked, keyPressed, mousePosition, keyReleased, mouseLocation, mouseDragged;
 
 	public void init() {
 				
@@ -36,6 +36,9 @@ public class Events extends Applet implements MouseListener, KeyListener, MouseM
 		gbc.gridy++;
 		add(new JLabel("Mouse Location : "), gbc);
 		
+		gbc.gridy++;
+		add(new JLabel("Mouse Dragged : "), gbc);
+		
 		gbc.gridy = 0;
 		gbc.gridx++;
 		
@@ -57,6 +60,10 @@ public class Events extends Applet implements MouseListener, KeyListener, MouseM
 		mouseLocation = new JLabel();
 		gbc.gridy++;
 		add(mouseLocation, gbc);
+		
+		mouseDragged = new JLabel();
+		gbc.gridy++;
+		add(mouseDragged, gbc);
 					
 		setFocusable(true);
 		setSize(400, 400);
@@ -152,13 +159,14 @@ public class Events extends Applet implements MouseListener, KeyListener, MouseM
 	@Override
 	public void mouseDragged(java.awt.event.MouseEvent e) {
 		
-		
+		mouseDragged.setText("Dragged");
 	}
 
 	@Override
 	public void mouseMoved(java.awt.event.MouseEvent e) {
 		
 		mouseLocation.setText(e.getX() + ", " + e.getY());
+		mouseDragged.setText("");
 	}
 }
 
