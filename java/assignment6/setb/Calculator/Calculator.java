@@ -28,7 +28,7 @@ public class Calculator extends JFrame implements ActionListener {
 			gbc.weighty = gbc.weightx = 1;
 			
 			field = new JTextField();
-			field.applyComponentOrientation(ComponentOrientation.getOrientation(new Locale("ar", "KW")));
+			field.setHorizontalAlignment(SwingConstants.RIGHT);
 			field.setFont(new Font("Arial", Font.PLAIN, 30));
 			field.setFocusable(false);
 			field.setText(result = "0");
