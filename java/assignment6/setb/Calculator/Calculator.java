@@ -29,7 +29,7 @@ public class Calculator extends JFrame implements ActionListener {
 			field.setFont(new Font("Arial", Font.PLAIN, 20));
 			field.setFocusable(false);
 			field.setHorizontalAlignment(JTextField.RIGHT);
-			field.setText((displayText = new StringBuffer("0")).toString());
+			field.setText("0");
 			gbc.gridwidth = GridBagConstraints.REMAINDER;
 			gbc.insets = new Insets(10, 10, 10, 10);
 			add(field,gbc);
@@ -131,6 +131,7 @@ public class Calculator extends JFrame implements ActionListener {
 			add(div, gbc);
 			
 			buff = new StringBuffer();
+			displayText = new StringBuffer();
 			
 			setSize(240, 320);
 			setLocation(400, 200);
@@ -186,6 +187,7 @@ public class Calculator extends JFrame implements ActionListener {
 		case "C":
 			buff.delete(0, buff.length());
 			displayText.delete(0, displayText.length());
+			field.setText("0");
 			input = "";
 			break;
 			
@@ -225,4 +227,3 @@ public class Calculator extends JFrame implements ActionListener {
 		return result;
 	}
 }
-
