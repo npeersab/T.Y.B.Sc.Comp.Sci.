@@ -26,7 +26,7 @@ public class CheckFile {
 			for(int i = 0; i < files.length; i++) {
 				File temp = new File(file.getPath() + "/" + files[i]);
 				if(temp.isFile())
-					if(files[i].indexOf(".txt") == files[i].length() - 4) {
+					if(files[i].endsWith(".txt")) {
 						System.out.print("Do you want to delete " + files[i] + " (y/n) ? : ");
 						BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 						char ch = (char) br.read();
