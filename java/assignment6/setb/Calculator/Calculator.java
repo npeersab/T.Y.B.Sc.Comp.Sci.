@@ -1,23 +1,20 @@
-import java.awt.ComponentOrientation;
-import java.awt.Event;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-import javax.swing.KeyStroke;
 
 public class Calculator extends JFrame implements ActionListener {
 	
-	private JButton zero, one, two, three, four, five, six, seven, eight, nine, add, mul, sub, div, equal, dot;
+	private JButton zero, one, two, three, four, five, six, seven, eight, nine, add, mul, sub, div, equal, dot, clear;
 	private JTextField field;
-	private String result;
+	private StringBuffer buff, displayText;
+	private String op1, op2;
+	private char opr;
 	
 	public Calculator() {
 		
@@ -28,17 +25,18 @@ public class Calculator extends JFrame implements ActionListener {
 			gbc.weighty = gbc.weightx = 1;
 			
 			field = new JTextField();
-			field.setHorizontalAlignment(SwingConstants.RIGHT);
-			field.setFont(new Font("Arial", Font.PLAIN, 30));
+			 
+			field.setFont(new Font("Arial", Font.PLAIN, 20));
 			field.setFocusable(false);
-			field.setText(result = "0");
+			field.setHorizontalAlignment(JTextField.RIGHT);
+			field.setText((displayText = new StringBuffer("0")).toString());
 			gbc.gridwidth = GridBagConstraints.REMAINDER;
 			gbc.insets = new Insets(10, 10, 10, 10);
 			add(field,gbc);
 			
 			gbc.gridwidth = GridBagConstraints.BOTH;
 			gbc.insets = new Insets(2, 10, 2, 2);
-			gbc.gridy++;
+			gbc.gridy+=2;
 			
 			one = new JButton("1");
 			one.addActionListener(this);
@@ -61,7 +59,7 @@ public class Calculator extends JFrame implements ActionListener {
 			
 			gbc.gridx++;
 			gbc.insets = new Insets(2, 2, 2, 2);
-			gbc.gridy = 1;
+			gbc.gridy = 2;
 						
 			two = new JButton("2");
 			two.addActionListener(this);
@@ -83,7 +81,7 @@ public class Calculator extends JFrame implements ActionListener {
 			add(dot, gbc);
 			
 			gbc.gridx++;
-			gbc.gridy = 1;
+			gbc.gridy = 2;
 								
 			three = new JButton("3");
 			three.addActionListener(this);
@@ -108,8 +106,13 @@ public class Calculator extends JFrame implements ActionListener {
 			gbc.gridx++;
 			gbc.insets = new Insets(2, 2, 2,10);
 			
+			clear = new JButton("C");
+			clear.addActionListener(this);
+			add(clear, gbc);
+			
 			add = new JButton("+");
 			add.addActionListener(this);
+			gbc.gridy++;
 			add(add, gbc);
 			
 			sub = new JButton("-");
@@ -127,6 +130,7 @@ public class Calculator extends JFrame implements ActionListener {
 			gbc.gridy++;
 			add(div, gbc);
 			
+			buff = new StringBuffer();
 			
 			setSize(240, 320);
 			setLocation(400, 200);
@@ -144,35 +148,81 @@ public class Calculator extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		JButton button = (JButton) e.getSource();
+		String input = button.getText();
 		
-		switch (button.getText()) {
+		switch (input) {
 		
 		case "+":
-	
+			op1 = buff.toString();
+			buff.delete(0, buff.length());
+			opr = '+';
 			break;
 			
 		case "-":
-			
+			op1 = buff.toString();
+			buff.delete(0, buff.length());
+			opr = '-';
 			break;
 			
 		case "*":
-			
+			op1 = buff.toString();
+			buff.delete(0, buff.length());
+			opr = '*';
 			break;
 
 		case "/":
-			
+			op1 = buff.toString();
+			buff.delete(0, buff.length());
+			opr = '/';
 			break;
 			
 		case "=":
+			op2 = buff.toString();
+			buff = new StringBuffer(execute(op1, op2, opr));
+			displayText.delete(0, displayText.length());
+			input = buff.toString();
+			break;
 			
+		case "C":
+			buff.delete(0, buff.length());
+			displayText.delete(0, displayText.length());
+			input = "";
 			break;
 			
 		default:
-			result += button.getText();
+			buff.append(input);
 		}
 		
-		field.setText(result);
-		field.updateUI();
+		displayText.append(input);
+		field.setText(displayText.toString());
+		
+	}
+	
+	private String execute(String op1, String op2, char opr) {
+		
+		double d1 = Double.parseDouble(op1), d2 = Double.parseDouble(op2);
+		String result = null;
+				
+		switch(opr) {
+			
+			case '+':
+				result = String.valueOf(d1 + d2);
+				break;
+				
+			case '-':
+				result = String.valueOf(d1 - d2);
+				break;
+				
+			case '*':
+				result = String.valueOf(d1 * d2);
+				break;
+				
+			case '/':
+				result = String.valueOf(d1 / d2);
+				break;
+		}
+		
+		return result;
 	}
 }
 
