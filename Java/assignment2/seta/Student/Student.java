@@ -37,15 +37,16 @@ class Student {
 		printline(43);
 		System.out.printf("| Roll No. | %15s | Percentage |\n", "Name");
 		printline(43);
-		for(int i = 0; i < count; i++)
-			System.out.printf("| %8d | %15s | %10.2f |\n", student[i].rollNo, student[i].name, student[i].per);
+		for (int i = 0; i < count; i++)
+			System.out.printf("| %8d | %15s | %10.2f |\n",
+					  student[i].rollNo, student[i].name, student[i].per);
 		printline(43);
 		System.out.println();
 	}
 	
 	// print horizontal dotted line
 	public static void printline(int n) {
-		for(int i = 0; i < n; i++)
+		for (int i = 0; i < n; i++)
         	                System.out.print('-');
                 	System.out.println();
 	}
@@ -77,6 +78,6 @@ class Student {
 					break;
 
 			}
-		} while(choice != 3);
+		} while (choice != 3);
 	} // main
 } // Student
