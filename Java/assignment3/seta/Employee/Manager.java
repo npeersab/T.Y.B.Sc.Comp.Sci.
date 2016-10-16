@@ -5,10 +5,12 @@ class Employee {
 	private String id, name, dept;
 	private float salary;
 
+	// default usless constructor
 	Employee() {
 
 	}
 
+	// parameterized constructor
 	Employee(String i, String nm, String dp, float sal) {
 
 		id = i;
@@ -17,6 +19,7 @@ class Employee {
 		salary = sal;
 	}
 	
+	// accept employee details
 	public void acceptEmployee() {
 
 		Scanner ip = new Scanner(System.in);
@@ -31,6 +34,7 @@ class Employee {
 		salary = ip.nextFloat();
 	}
 	
+	// display employee details
 	public void displayEmployee() {
 
 		System.out.println("ID : "  + id);
@@ -39,6 +43,7 @@ class Employee {
 		System.out.println("Salary : " + salary);
 	}
 
+	// return salary
 	public float getSalary() {
 
 		return salary;
@@ -50,16 +55,19 @@ class Manager extends Employee {
 
 	private float bonus;
 
+	// default useless constructor
 	Manager() {
 
 	}
 
+	// parameterized constructor
 	Manager(String i, String n, String dp, float sal, float bon) {
 
 		super(i, n, dp, sal);
 		bonus = bon;
 	}
 
+	// accept manager details
 	public void acceptManager() {
 	
 		Scanner ip = new Scanner(System.in);
@@ -70,17 +78,20 @@ class Manager extends Employee {
 		
 	}
 
+	// display manager details
 	public void displayManager() {
 		
 		displayEmployee();
 		System.out.println("Bonus : " + bonus);
 	}
 	
+	// return total salary
 	public float getTotalSalary() {
 		
 		return bonus + getSalary();
 	}
 
+	// return index of manager with maximum salary
 	public static int getMaxSalMan(Manager manager[]) {
 
 		int max = 0;;
@@ -98,13 +109,14 @@ class Manager extends Employee {
 		int n = ip.nextInt();
 
 		Manager manager[] = new Manager[n];
-		for(int i = 0; i < n; i++) {
+		for (int i = 0; i < n; i++) {
 			manager[i] = new Manager();
 			manager[i].acceptManager();
 		}
 
 		System.out.println("\nManager with maximun Salary :");
-		manager[Manager.getMaxSalMan(manager)].displayManager();
+		manager[Manager.getMaxSalMan(manager)]
+			.displayManager();
 
 				
 	}
