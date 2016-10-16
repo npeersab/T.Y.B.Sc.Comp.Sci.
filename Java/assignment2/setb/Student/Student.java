@@ -63,8 +63,9 @@ class Student {
 		printline(34);
 		System.out.printf("| Roll No. | %10s |  Grade |\n", "Name");
 		printline(34);
-		for(int i = 0; i < student.length; i++)
-			System.out.printf("| %8d | %10s | %6s |\n", student[i].rollNo, student[i].name, student[i].getGrade());
+		for (int i = 0; i < student.length; i++)
+			System.out.printf("| %8d | %10s | %6s |\n",
+					  student[i].rollNo, student[i].name, student[i].getGrade());
 		printline(34);
 
 	}
@@ -74,13 +75,13 @@ class Student {
 
 		int marks = (syMarks.getTotal() / 4 + tyMarks.getTotal() / 6) / 2;
 
-		if(marks >= 70)
+		if (marks >= 70)
 			return "A";
-		else if(marks >= 60)
+		else if (marks >= 60)
 			return "B";
-		else if(marks >= 50)
+		else if (marks >= 50)
 			return "C";
-		else if(marks >= 40)
+		else if (marks >= 40)
 			return "Pass";
 		else
 			return "Fail";
@@ -89,7 +90,7 @@ class Student {
 	// display dotted horizontal line
 	public static void printline(int n) {
 
-		for(int i = 0; i < n; i++)
+		for (int i = 0; i < n; i++)
 			System.out.print('-');
 		System.out.println();
 	}
@@ -105,7 +106,7 @@ class Student {
 		int rno;
 		String name;
 
-		for(int i = 0; i < n; i++) {
+		for (int i = 0; i < n; i++) {
 
 			System.out.print("\nEnter roll No : ");
 			rno = ip.nextInt();
