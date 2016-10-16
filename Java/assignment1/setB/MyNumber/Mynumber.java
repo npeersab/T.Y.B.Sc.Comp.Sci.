@@ -2,7 +2,7 @@ class Mynumber {
 
 	public static void main(String args[]) {
 
-		if(args.length > 0) {
+		if (args.length > 0) {
 
 			Mynumber num1 = new Mynumber(Integer.parseInt(args[0]));
 
