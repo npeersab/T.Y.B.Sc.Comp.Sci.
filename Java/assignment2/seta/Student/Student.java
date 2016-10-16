@@ -21,6 +21,7 @@ class Student {
 		incCount();
 	}
 
+	// to increament the counter after each object created
 	static void incCount() {
 
 		count++;
