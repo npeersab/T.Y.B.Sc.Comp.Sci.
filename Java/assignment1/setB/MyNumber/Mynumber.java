@@ -19,6 +19,7 @@ class Mynumber {
 			if(num1.isOdd())
 				System.out.println("Number is odd");
 		}
+		// if user does not provide argument
 		else 
 			System.out.println("Insufficient arguments");
 		
@@ -27,38 +28,43 @@ class Mynumber {
 
 	private int number;
 	
-	//default constructor
+	// default constructor
 	Mynumber() { 
 
 		number = 0;
 	}
 
-	//parameterized constructor
+	// parameterized constructor
 	Mynumber(int num) {
 
 		this.number = num;
 	}
 
+	// return true if number is negative
 	public boolean isNegative() {
 		
 		return number < 0;
 	}
 
+	// return true if number is positive
 	public boolean isPositive() {
 
 		return number > 0;
 	}
 
+	// return true only if number is zero
 	public boolean isZero() {
 
 		return number == 0;
 	}
 
+	// return true if number is odd
 	public boolean isOdd() {
 
 		return number % 2 != 0;
 	}
 
+	// return true if number is even
 	public boolean isEven() {
 	
 		return number % 2 == 0;
