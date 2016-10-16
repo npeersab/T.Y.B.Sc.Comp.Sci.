@@ -7,11 +7,13 @@ class Student {
 	private float per;
 	static int count;
 
+	// default constructor
 	Student() {
 
 		incCount();
 	}
 
+	// parameterized constructor
 	Student(int rn, String nm, float pr) {
 
 		rollNo = rn;
@@ -21,6 +23,7 @@ class Student {
 		incCount();
 	}
 
+	// increment count after each object created
 	static void incCount() {
 
 		count++;
@@ -28,6 +31,7 @@ class Student {
 	}
 
 
+	// sort student data using bubble sort
 	static void sortStudent(Student student[]) {
 	
 		for(int i = 0; i < Student.count; i++)
@@ -39,6 +43,7 @@ class Student {
 				}
 	}
 
+	// display student data
 	public static void display(Student student[]) {
 
 		System.out.println("\nStudent Details :");
@@ -51,6 +56,7 @@ class Student {
 		System.out.println();
 	}
 
+	// print horizontal dotted line
 	public static void printline(int n) {
                 for(int i = 0; i < n; i++)
                                 System.out.print('-');
