@@ -7,11 +7,13 @@ class Student {
 	private float per;
 	static int count;
 
+	// default constructor
 	Student() {
 
 		incCount();
 	}
 
+	// parameterized constructor
 	Student(int rn, String nm, float pr) {
 
 		rollNo = rn;
@@ -28,6 +30,7 @@ class Student {
 		System.out.println(count + " objects created...");
 	}
 
+	// display student data
 	public static void display(Student student[]) {
 
 		System.out.println("\nStudent Details :");
@@ -40,6 +43,7 @@ class Student {
 		System.out.println();
 	}
 	
+	// print horizontal dotted line
 	public static void printline(int n) {
 		for(int i = 0; i < n; i++)
         	                System.out.print('-');
