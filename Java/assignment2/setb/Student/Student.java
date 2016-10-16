@@ -9,12 +9,14 @@ class Student {
 	private	SyMarks syMarks;
 	private	TyMarks tyMarks;
 
+	// parameterized constructor
 	Student(int rno, String nm) {
 		
 		rollNo = rno;
 		name = nm;
 	}
 
+	// accept marks of sy from user
 	void setSYMarks() {
 
 		Scanner ip = new Scanner(System.in);
@@ -32,6 +34,7 @@ class Student {
 
 	}
 
+	// accept marks of ty from user
 	void setTYMarks() {
 
 		Scanner ip = new Scanner(System.in);		
@@ -53,6 +56,7 @@ class Student {
 		tyMarks = new TyMarks(php, java, oose, cn, syspro, tcs);
 	}
 
+	// display student details
 	public static void display(Student student[]) {
 
 		System.out.println("\nStudent Details :");
@@ -65,6 +69,7 @@ class Student {
 
 	}
 
+	// calculate student grades
 	String getGrade() {
 
 		int marks = (syMarks.getTotal() / 4 + tyMarks.getTotal() / 6) / 2;
@@ -81,6 +86,7 @@ class Student {
 			return "Fail";
 	}
 
+	// display dotted horizontal line
 	public static void printline(int n) {
 
 		for(int i = 0; i < n; i++)
