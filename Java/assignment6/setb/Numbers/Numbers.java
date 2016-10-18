@@ -155,7 +155,14 @@ public class Numbers extends JFrame implements ActionListener {
 		case "Search":
 			search();
 			break;
-
+			
+		case "Ascending":
+			ascending();
+			break;
+			
+		case "Descending":
+			descending();
+			break;
 		}
 	}
 	
@@ -163,19 +170,12 @@ public class Numbers extends JFrame implements ActionListener {
 	public void load() {
 		
 		// generate random numbers
-		StringBuffer buffer = new StringBuffer();
 		Random random = new Random();
 		for (int i = 0; i < maxSize; i++) {
 			numbers[i] = Math.abs(random.nextInt()) % 90 + 10;
-			buffer.append(numbers[i] + " ");
 		}
 		
-		// add newline after 10 numbers
-		for (int i = 0, coeff = 30; i < 4; i++, coeff += 30) {
-			buffer.insert(coeff + i, '\n');
-		}
-		
-		textArea.setText(buffer.toString());
+		textArea.setText(toString());
 	}
 	
 	// display sum of all numbers
@@ -188,7 +188,7 @@ public class Numbers extends JFrame implements ActionListener {
 	// display  average of numbers
 	public void average() {
 		
-		display(computeString[1] + " is " + ((float) getSum()) / maxSize, computeString[1]);
+		displayMessage(computeString[1] + " is " + ((float) getSum()) / maxSize, computeString[1]);
 	}
 	
 	// display maximum number
@@ -198,7 +198,7 @@ public class Numbers extends JFrame implements ActionListener {
 		for (int n : numbers)
 			max = Integer.max(max, n);
 		
-		display(computeString[2] + " number is " + max, 
+		displayMessage(computeString[2] + " number is " + max, 
 				computeString[2]);
 	}
 	
@@ -209,14 +209,14 @@ public class Numbers extends JFrame implements ActionListener {
 		for (int n : numbers)
 			min = Integer.min(min, n);
 		
-		display(computeString[3] + " number is " + min,
+		displayMessage(computeString[3] + " number is " + min,
 				computeString[3]);
 	}
 	
 	// display median
 	public void median() {
 		
-		display(computeString[4] + " is " + getSorted()[maxSize / 2],
+		displayMessage(computeString[4] + " is " + getSortedAscending()[maxSize / 2],
 				"Average");
 	}
 	
@@ -240,7 +240,7 @@ public class Numbers extends JFrame implements ActionListener {
 			
 		} catch (NumberFormatException e) {
 			
-			display("Invalid input !!! ", "Error");
+			displayMessage("Invalid input !!! ", "Error");
 			return;
 		}
 		
@@ -254,13 +254,42 @@ public class Numbers extends JFrame implements ActionListener {
 			}
 		
 		if(flag)
-			display(num + " found at position " + buffer.toString(), "Found");	
+			displayMessage(num + " found at position " + buffer.toString(), "Found");	
 		else 
-			display(num + " not found", "Not found");
+			displayMessage(num + " not found", "Not found");
 	}
+	
+	// set numbers in ascending order
+	private void ascending() {
 		
-	// return sorted numbers
-	public int[] getSorted() {
+		numbers = getSortedAscending();
+		textArea.setText(toString());
+	}
+	
+	// set numbers in descending order
+	private void descending() {
+		
+		numbers = getSortedDescending();
+		textArea.setText(toString());
+	}
+	
+	// return numbers in string format
+	public String toString() {
+		
+		StringBuffer buffer = new StringBuffer();
+		for(int n : numbers)
+			buffer.append(n + " ");
+		
+		// add newline after 10 numbers
+		for (int i = 0, coeff = 30; i < 4; i++, coeff += 30) {
+			buffer.insert(coeff + i, '\n');
+		}
+		
+		return buffer.toString();
+	}
+	
+	// return sorted numbers in ascending order
+	public int[] getSortedAscending() {
 		
 		// copy numbers in temporary array
 		int num[] = new int[maxSize], k = 0;
@@ -269,8 +298,28 @@ public class Numbers extends JFrame implements ActionListener {
 		
 		// sort the array
 		for (int i = 0; i < maxSize; i++)
-			for (int j = i; j < maxSize - i - 1; j++)
+			for (int j = 0; j < maxSize - i - 1; j++)
 				if (num[j] > num[j + 1]) {
+					num[j] = num[j] + num[j + 1];
+					num[j + 1] = num[j] - num[j + 1];
+					num[j] = num[j] - num[j + 1];
+				}
+		
+		return num;
+	}
+	
+	// return sorted numbers in descending order
+	public int[] getSortedDescending() {
+		
+		// copy numbers in temporary array
+		int num[] = new int[maxSize], k = 0;
+		for (int n : numbers)
+			num[k++] = n;
+		
+		// sort the array
+		for (int i = 0; i < maxSize; i++)
+			for (int j = 0; j < maxSize - i - 1; j++)
+				if (num[j] < num[j + 1]) {
 					num[j] = num[j] + num[j + 1];
 					num[j + 1] = num[j] - num[j + 1];
 					num[j] = num[j] - num[j + 1];
@@ -291,7 +340,7 @@ public class Numbers extends JFrame implements ActionListener {
 	}
  
 	// display message
-	public void display(String message, String title) {
+	public void displayMessage(String message, String title) {
 		
 		JOptionPane.showInternalMessageDialog(
 				this.getContentPane(),
