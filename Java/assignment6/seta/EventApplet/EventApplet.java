@@ -4,18 +4,16 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JLabel;
 
-public class Event extends Applet implements MouseListener, KeyListener, MouseMotionListener {
-	
-
+public class EventApplet extends Applet implements MouseListener, KeyListener, MouseMotionListener {
 	private static final long serialVersionUID = 1L;
 	private JLabel keyClicked, keyPressed, mousePosition, keyReleased, mouseLocation, mouseDragged;
 
 	public void init() {
-				
 		setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -72,52 +70,49 @@ public class Event extends Applet implements MouseListener, KeyListener, MouseMo
 		addMouseMotionListener(this);
 	}
 
-	@Override
-	public void mouseClicked(java.awt.event.MouseEvent e) {
-
+	//@Override
+	public void mouseClicked(MouseEvent e) {
 		String labelText = null;
 		
-		if(e.getButton() == java.awt.event.MouseEvent.BUTTON1)
+		if (e.getButton() == MouseEvent.BUTTON1)
 			labelText = "Right Key";
 		
-		if(e.getButton() == java.awt.event.MouseEvent.BUTTON2)
+		if (e.getButton() == MouseEvent.BUTTON2)
 			labelText = "Middle Key";
 		
-		if(e.getButton() == java.awt.event.MouseEvent.BUTTON3)
+		if (e.getButton() == MouseEvent.BUTTON3)
 			labelText = "Left Key";
 		
 		keyClicked.setText(labelText);
 	}
 
 	@Override
-	public void mousePressed(java.awt.event.MouseEvent e) {
-		
+	public void mousePressed(MouseEvent e) {
 		String labelText = null;
 		
-		if(e.getButton() == java.awt.event.MouseEvent.BUTTON1)
+		if (e.getButton() == MouseEvent.BUTTON1)
 			labelText = "Right Key";
 		
-		if(e.getButton() == java.awt.event.MouseEvent.BUTTON2)
+		if (e.getButton() == MouseEvent.BUTTON2)
 			labelText = "Middle Key";
 		
-		if(e.getButton() == java.awt.event.MouseEvent.BUTTON3)
+		if (e.getButton() == MouseEvent.BUTTON3)
 			labelText = "Left Key";
 		
 		keyPressed.setText(labelText);
 	}
 
 	@Override
-	public void mouseReleased(java.awt.event.MouseEvent e) {
-		
+	public void mouseReleased(MouseEvent e) {
 		String labelText = null;
 		
-		if(e.getButton() == java.awt.event.MouseEvent.BUTTON1)
+		if (e.getButton() == MouseEvent.BUTTON1)
 			labelText = "Right Key";
 		
-		if(e.getButton() == java.awt.event.MouseEvent.BUTTON2)
+		if (e.getButton() == MouseEvent.BUTTON2)
 			labelText = "Middle Key";
 		
-		if(e.getButton() == java.awt.event.MouseEvent.BUTTON3)
+		if (e.getButton() == MouseEvent.BUTTON3)
 			labelText = "Left Key";
 		
 		keyReleased.setText(labelText);
@@ -125,48 +120,38 @@ public class Event extends Applet implements MouseListener, KeyListener, MouseMo
 	}
 
 	@Override
-	public void mouseEntered(java.awt.event.MouseEvent e) {
-		
+	public void mouseEntered(MouseEvent e) {
 		mousePosition.setText("In window");
 	}
 
 	@Override
-	public void mouseExited(java.awt.event.MouseEvent e) {
-		
+	public void mouseExited(MouseEvent e) {
 		mousePosition.setText("Out of window");		
 	}
 
 	@Override
-	public void keyTyped(KeyEvent e) {
-		
-		
-	}
+	public void keyTyped(KeyEvent e) { }
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		
 		keyPressed.setText(KeyEvent.getKeyText(e.getKeyCode()));
 		keyClicked.setText(KeyEvent.getKeyText(e.getKeyCode()));
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		
 		keyReleased.setText(KeyEvent.getKeyText(e.getKeyCode()));
 		keyPressed.setText(null);
 	}
 
 	@Override
-	public void mouseDragged(java.awt.event.MouseEvent e) {
-		
+	public void mouseDragged(MouseEvent e) {
 		mouseDragged.setText("Dragged");
 	}
 
 	@Override
-	public void mouseMoved(java.awt.event.MouseEvent e) {
-		
+	public void mouseMoved(MouseEvent e) {
 		mouseLocation.setText(e.getX() + ", " + e.getY());
 		mouseDragged.setText("");
 	}
 }
-
