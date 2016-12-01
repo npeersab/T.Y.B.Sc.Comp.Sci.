@@ -16,7 +16,6 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextArea;
 
 public class Numbers extends JFrame implements ActionListener {
-	
 	private JMenuBar menuBar;
 	private JMenu file, compute, operations;
 	private final String computeString[] =  {"Sum", "Average", "Maximum", "Minimum", "Median"},
@@ -28,7 +27,6 @@ public class Numbers extends JFrame implements ActionListener {
 	private final int maxSize = 50;
 	
 	public Numbers() {
-		
 		// Create new Menu bar
 		menuBar = new JMenuBar();
 		
@@ -103,13 +101,11 @@ public class Numbers extends JFrame implements ActionListener {
 	}
 	
 	public static void main(String args[]) {
-		
 		new Numbers();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
 		Object object = e.getSource();
 		String menuString = null;
 		
@@ -119,13 +115,11 @@ public class Numbers extends JFrame implements ActionListener {
 			menuString = ((JRadioButtonMenuItem) object).getText();
 
 		switch (menuString) {
-
 		case "Load":
 			load();
 			break;
 
 		case "Save":
-
 			break;
 
 		case "Exit":
@@ -168,32 +162,27 @@ public class Numbers extends JFrame implements ActionListener {
 	
 	// generate random numbers and display in textarea 
 	public void load() {
-		
 		// generate random numbers
 		Random random = new Random();
 		for (int i = 0; i < maxSize; i++) {
 			numbers[i] = Math.abs(random.nextInt()) % 90 + 10;
 		}
-		
 		textArea.setText(toString());
 	}
 	
 	// display sum of all numbers
 	public void sum() {
-		
 		JOptionPane.showInternalMessageDialog(
 				this.getContentPane(), computeString[0] + " is " + getSum(), computeString[0], JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	// display  average of numbers
 	public void average() {
-		
 		displayMessage(computeString[1] + " is " + ((float) getSum()) / maxSize, computeString[1]);
 	}
 	
 	// display maximum number
 	public void maximun() {
-		
 		int max = 0;
 		for (int n : numbers)
 			max = Integer.max(max, n);
@@ -204,7 +193,6 @@ public class Numbers extends JFrame implements ActionListener {
 	
 	// display  minimum number
 	public void minimum() {
-		
 		int min = numbers[0];
 		for (int n : numbers)
 			min = Integer.min(min, n);
@@ -215,19 +203,16 @@ public class Numbers extends JFrame implements ActionListener {
 	
 	// display median
 	public void median() {
-		
 		displayMessage(computeString[4] + " is " + getSortedAscending()[maxSize / 2],
 				"Average");
 	}
 	
 	// search for a number
 	public void search() {
-		
 		int num = 0;
 		
 		// if user give input other than integer
 		try {
-			
 			String buff = 
 				JOptionPane
 				.showInputDialog("Enter number to be searched :");
@@ -239,7 +224,6 @@ public class Numbers extends JFrame implements ActionListener {
 			num = Integer.parseInt(buff);
 			
 		} catch (NumberFormatException e) {
-			
 			displayMessage("Invalid input !!! ", "Error");
 			return;
 		}
@@ -253,7 +237,7 @@ public class Numbers extends JFrame implements ActionListener {
 				flag = true;
 			}
 		
-		if(flag)
+		if (flag)
 			displayMessage(num + " found at position " + buffer.toString(), "Found");	
 		else 
 			displayMessage(num + " not found", "Not found");
@@ -261,21 +245,18 @@ public class Numbers extends JFrame implements ActionListener {
 	
 	// set numbers in ascending order
 	private void ascending() {
-		
 		numbers = getSortedAscending();
 		textArea.setText(toString());
 	}
 	
 	// set numbers in descending order
 	private void descending() {
-		
 		numbers = getSortedDescending();
 		textArea.setText(toString());
 	}
 	
 	// return numbers in string format
 	public String toString() {
-		
 		StringBuffer buffer = new StringBuffer();
 		for(int n : numbers)
 			buffer.append(n + " ");
@@ -290,7 +271,6 @@ public class Numbers extends JFrame implements ActionListener {
 	
 	// return sorted numbers in ascending order
 	public int[] getSortedAscending() {
-		
 		// copy numbers in temporary array
 		int num[] = new int[maxSize], k = 0;
 		for (int n : numbers)
@@ -304,13 +284,11 @@ public class Numbers extends JFrame implements ActionListener {
 					num[j + 1] = num[j] - num[j + 1];
 					num[j] = num[j] - num[j + 1];
 				}
-		
 		return num;
 	}
 	
 	// return sorted numbers in descending order
 	public int[] getSortedDescending() {
-		
 		// copy numbers in temporary array
 		int num[] = new int[maxSize], k = 0;
 		for (int n : numbers)
@@ -330,18 +308,15 @@ public class Numbers extends JFrame implements ActionListener {
 	
 	// return sum of all numbers
 	public int getSum() {
-
 		int sum = 0;
 		for (int n : numbers) {
 			sum += n;
 		}
-		
 		return sum;
 	}
  
 	// display message
 	public void displayMessage(String message, String title) {
-		
 		JOptionPane.showInternalMessageDialog(
 				this.getContentPane(),
 				message,
