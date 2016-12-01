@@ -9,7 +9,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.font.TextAttribute;
+import java.util.HashMap;
 import java.util.Map;
+
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -18,7 +20,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class TextFieldFont extends JFrame implements ActionListener, ItemListener {
-	
 	private static final long serialVersionUID = 5195319646746975928L;
 	private JComboBox<?> fontFamilyComboBox, sizeComboBox;
 	private JLabel fontLabel, sizeLabel, styleLabel;
@@ -29,7 +30,6 @@ public class TextFieldFont extends JFrame implements ActionListener, ItemListene
 	private int underline = -1;
 		
 	public TextFieldFont() {
-		
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
 		
@@ -42,6 +42,7 @@ public class TextFieldFont extends JFrame implements ActionListener, ItemListene
 		fontLabel = new JLabel("Font");
 		panel.add(fontLabel, gbc);
 		
+		// get all available system fonts
 		String[] fontFamily = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
 		fontFamilyComboBox = new JComboBox<String>(fontFamily);
 		fontFamilyComboBox.addActionListener(this);
@@ -99,27 +100,23 @@ public class TextFieldFont extends JFrame implements ActionListener, ItemListene
 	}
 
 	public static void main(String[] args) {
-		
 		new TextFieldFont();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-				
 		Object obj = e.getSource();
 		
-		if(obj == fontFamilyComboBox) {
-			
+		if (obj == fontFamilyComboBox) {
 			fontName = fontFamilyComboBox.getSelectedItem().toString();
 		}
 		
-		else if(obj == sizeComboBox) {
-			
+		else if (obj == sizeComboBox) {
 			fontSize = (Integer) sizeComboBox.getSelectedItem();
 		}
 		
 		Font font = new Font(fontName, fontStyle, fontSize);
-		Map attributes = font.getAttributes();
+		Map<TextAttribute, Object> attributes = new HashMap<TextAttribute, Object>(font.getAttributes());
 		attributes.put(TextAttribute.UNDERLINE, underline);
 		textField.setFont(font.deriveFont(attributes));
 		this.getContentPane().revalidate();
@@ -129,34 +126,30 @@ public class TextFieldFont extends JFrame implements ActionListener, ItemListene
 	public void itemStateChanged(ItemEvent e) {
 		Object obj = e.getItemSelectable();
 		
-		if(e.getStateChange() == ItemEvent.SELECTED) {
-			if(obj == boldCheckBox)
+		if (e.getStateChange() == ItemEvent.SELECTED) {
+			if (obj == boldCheckBox)
 				fontStyle += Font.BOLD;
 			
-			else if(obj == italicCheckBox) 
+			else if (obj == italicCheckBox) 
 				fontStyle += Font.ITALIC;
 			
-			else if(obj == underlineCheckBox)
+			else if (obj == underlineCheckBox)
 				underline = TextAttribute.UNDERLINE_ON;
 		}
 		
-		else if(e.getStateChange() == ItemEvent.DESELECTED) {
-			
-			if(obj == boldCheckBox)
+		else if (e.getStateChange() == ItemEvent.DESELECTED) {
+			if (obj == boldCheckBox)
 				fontStyle -= Font.BOLD;
 			
-			else if(obj == italicCheckBox) 
+			else if (obj == italicCheckBox) 
 				fontStyle -= Font.ITALIC;
 				
 			else if(obj == underlineCheckBox)
 				underline = -1;
 		}
 				
-		if(underlineCheckBox.isSelected()) {
-			
-		}
 		Font font = new Font(fontName, fontStyle, fontSize);
-		Map attributes = font.getAttributes();
+		Map<TextAttribute, Object> attributes = new HashMap<TextAttribute, Object>(font.getAttributes());
 		attributes.put(TextAttribute.UNDERLINE, underline);
 		textField.setFont(font.deriveFont(attributes));
 	}
