@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 public class Calculator extends JFrame implements ActionListener {
-	
+	private static final long serialVersionUID = 1L;
 	private JButton zero, one, two, three, four, five, six, seven, eight, nine, add, mul, sub, div, equal, dot, clear;
 	private JTextField field;
 	private StringBuffer buff, displayText;
@@ -17,7 +17,6 @@ public class Calculator extends JFrame implements ActionListener {
 	private char opr;
 	
 	public Calculator() {
-		
 			setLayout(new GridBagLayout());
 			GridBagConstraints gbc = new GridBagConstraints();
 			gbc.gridx = gbc.gridy = 0;
@@ -25,7 +24,6 @@ public class Calculator extends JFrame implements ActionListener {
 			gbc.weighty = gbc.weightx = 1;
 			
 			field = new JTextField();
-			 
 			field.setFont(new Font("Arial", Font.PLAIN, 20));
 			field.setFocusable(false);
 			field.setHorizontalAlignment(JTextField.RIGHT);
@@ -141,30 +139,27 @@ public class Calculator extends JFrame implements ActionListener {
 	}
 
 	public static void main(String[] args) {
-
 		new Calculator();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
 		JButton button = (JButton) e.getSource();
 		String input = button.getText();
 		
 		switch (input) {
-		
 		case "+":
 			op1 = buff.toString();
 			buff.delete(0, buff.length());
 			opr = '+';
 			break;
-			
+
 		case "-":
 			op1 = buff.toString();
 			buff.delete(0, buff.length());
 			opr = '-';
 			break;
-			
+
 		case "*":
 			op1 = buff.toString();
 			buff.delete(0, buff.length());
@@ -187,43 +182,38 @@ public class Calculator extends JFrame implements ActionListener {
 		case "C":
 			buff.delete(0, buff.length());
 			displayText.delete(0, displayText.length());
-			field.setText("0");
-			input = "";
+			input = "0";
 			break;
 			
 		default:
 			buff.append(input);
 		}
-		
 		displayText.append(input);
 		field.setText(displayText.toString());
-		
 	}
 	
-	private String execute(String op1, String op2, char opr) {
-		
+	private String execute(String op1, String op2, char opr) {		
 		double d1 = Double.parseDouble(op1), d2 = Double.parseDouble(op2);
 		String result = null;
 				
-		switch(opr) {
-			
-			case '+':
+		switch (opr) {
+		case '+':
 				result = String.valueOf(d1 + d2);
 				break;
 				
-			case '-':
+		case '-':
 				result = String.valueOf(d1 - d2);
 				break;
 				
-			case '*':
+		case '*':
 				result = String.valueOf(d1 * d2);
 				break;
 				
-			case '/':
+		case '/':
 				result = String.valueOf(d1 / d2);
 				break;
 		}
-		
 		return result;
 	}
 }
+
