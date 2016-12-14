@@ -33,13 +33,14 @@ public class Student extends JFrame {
 	}
 	
 	public static void main(String[] args) {
+		Connection connection = null;
 		
 		try {
 			// loading postgresql driver
 			Class.forName("org.postgresql.Driver");
 			
 			// creating connection
-			Connection connection = DriverManager.getConnection(
+			connection = DriverManager.getConnection(
 					"jdbc:postgresql://localhost/studentdb", "postgres", "noor!xyz");
 			
 			// create statement
@@ -73,7 +74,14 @@ public class Student extends JFrame {
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(
 					null, "Unable to connect database", "Database Error", JOptionPane.ERROR_MESSAGE);
-			e.printStackTrace();
+		} finally {
+			// close the connections
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				JOptionPane.showMessageDialog(
+						null, "Unable to close connection database", "Database Error", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 	}
 }

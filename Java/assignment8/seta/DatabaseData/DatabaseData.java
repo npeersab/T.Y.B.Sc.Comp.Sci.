@@ -3,15 +3,17 @@ import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class DatabaseData {
 	public static void main(String[] args) {
+		Connection connection = null; 
 		try {
 			// load driver
 			Class.forName("org.postgresql.Driver");
 			
 			// create connection
-			Connection connection = DriverManager.getConnection(
+			connection = DriverManager.getConnection(
 					"jdbc:postgresql://localhost/studentdb", "postgres", "noor!xyz");
 			
 			// get data about database
@@ -38,6 +40,15 @@ public class DatabaseData {
 			System.out.println("Error while loading drivers");
 		} catch (SQLException e) {
 			System.out.println("Error while reading database");
+		} finally {
+			// close the connections
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				JOptionPane.showMessageDialog(
+						null, "Unable to close connection database", "Database Error", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 	}
 }
+
