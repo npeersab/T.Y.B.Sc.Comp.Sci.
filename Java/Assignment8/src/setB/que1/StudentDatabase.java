@@ -1,4 +1,4 @@
-package jdbc;
+package setB.que1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,16 +12,16 @@ public class StudentDatabase {
 	private Statement statement;
 	private ResultSet resultSet;
 	public static Scanner scanner;
-		
+
 	public StudentDatabase() {
 		try {
 			// load driver
 			Class.forName("org.postgresql.Driver");
-			
+
 			// establish connection
 			connection = DriverManager.getConnection(
 					"jdbc:postgresql://localhost/studentdb", "postgres", "noor!xyz");
-			
+
 			// create statement
 			statement = connection.createStatement();
 		} catch (ClassNotFoundException e) {
@@ -31,10 +31,10 @@ public class StudentDatabase {
 			System.out.println("Unable to connect database");
 			System.exit(1);
 		}
-		
+
 		scanner = new Scanner(System.in);
 	}
-	
+
 	public void insert() {
 		// accept data of student
 		System.out.print("Roll No: ");
@@ -44,7 +44,7 @@ public class StudentDatabase {
 		System.out.print("Percentage: ");
 		float percentage = scanner.nextFloat();
 		int count = 0;
-		
+
 		try {
 			// insert data into table
 			count = statement.executeUpdate(
@@ -55,7 +55,7 @@ public class StudentDatabase {
 		if (count != 0)
 			System.out.println("added new record");
 	}
-	
+
 	public void modify() {
 		// accept roll no
 		System.out.print("Enter roll no: ");
@@ -83,14 +83,14 @@ public class StudentDatabase {
 		} catch (SQLException e) {
 			System.out.println("Unable update databse");
 		}
-		
+
 		// check if records are updated or not
 		if (count == 0)
 			System.out.println("record not found");
 		else
 			System.out.println("record updated successfully");
 	}
-	
+
 	public void delete() {
 		// accept roll no
 		System.out.print("Enter roll no: ");
@@ -98,7 +98,7 @@ public class StudentDatabase {
 		int count = 0;
 		try {
 			// delete data from database
-			 count = statement.executeUpdate(
+			count = statement.executeUpdate(
 					"DELETE FROM student WHERE rollno = " + rollNo);
 		} catch (SQLException e) {
 			System.out.println("Unable to delete record from table");
@@ -108,12 +108,12 @@ public class StudentDatabase {
 		else 
 			System.out.println("record deleted successfully");
 	}
-	
+
 	public void search() {
 		// accept roll no
 		System.out.print("Enter roll no: ");
 		int rollNo = scanner.nextInt();
-		
+
 		try {
 			// get data from database
 			resultSet = statement.executeQuery(
@@ -123,7 +123,7 @@ public class StudentDatabase {
 			System.out.println("Unable to find record");
 		}
 	}
-	
+
 	public void viewAll() {
 		try {
 			// get data from database
@@ -133,7 +133,7 @@ public class StudentDatabase {
 			System.out.println("Unable to find record");
 		}		
 	}
-	
+
 	public void printData() {
 		printline();
 		System.out.printf("| %s | %10s | %s |\n", "Roll No", "Name", "Percentage");
@@ -148,13 +148,20 @@ public class StudentDatabase {
 			System.out.println("Unable to records");
 		}
 	}
-	
+
 	public static void printline() {
 		for (int i = 0; i < 37; i++)
 			System.out.print("-");
 		System.out.println();
 	}
-	
+
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+		if (connection != null)
+			connection.close();
+	}
+
 	public static void main(String args[]) {
 		StudentDatabase studentDatabase = new StudentDatabase();
 		int choice = 0;
@@ -167,28 +174,28 @@ public class StudentDatabase {
 			System.out.println("6. Exit");
 			System.out.print("Enter your choice: ");
 			choice = scanner.nextInt();
-			
+
 			switch (choice) {
 			case 1:
 				studentDatabase.insert();
 				break;
-				
+
 			case 2:
 				studentDatabase.modify();
 				break;
-				
+
 			case 3:
 				studentDatabase.delete();
 				break;
-				
+
 			case 4:
 				studentDatabase.search();
 				break;
-				
+
 			case 5:
 				studentDatabase.viewAll();
 				break;
-				
+
 			case 6:
 				System.exit(0);
 

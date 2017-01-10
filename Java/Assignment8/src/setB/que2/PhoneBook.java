@@ -1,10 +1,11 @@
+package setB.que2;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -192,7 +193,7 @@ public class PhoneBook extends JFrame {
 					this, "Details Updated...", "Success", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-	
+
 	// delete record
 	public void deleteRecord() {
 		try {
@@ -240,7 +241,7 @@ public class PhoneBook extends JFrame {
 					"Error", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
-		
+
 		if (phone.length() < 10) {
 			JOptionPane.showMessageDialog(this, "Phone number should contain at least 10 digits", 
 					"Error", JOptionPane.ERROR_MESSAGE);
@@ -267,36 +268,5 @@ public class PhoneBook extends JFrame {
 		PhoneBookConnection phoneBookConnection = new PhoneBookConnection();
 		Connection connection = phoneBookConnection.getConnection();
 		new PhoneBook(connection);
-	}
-}
-
-class PhoneBookConnection {
-	private final String URL = "jdbc:postgresql://localhost/phonebook",
-			USER = "postgres", PASSWORD = "noor!xyz", DRIVER = "org.postgresql.Driver";
-	private Connection connection;
-
-	// constructor
-	public PhoneBookConnection() {
-		try {
-			// load database driver
-			Class.forName(DRIVER);
-
-			// establish connection
-			connection = DriverManager.getConnection(URL, USER, PASSWORD);
-
-		} catch (ClassNotFoundException e) {
-			JOptionPane.showMessageDialog(
-					null, "Unable to load drivers...", "No Drivers Found", JOptionPane.ERROR_MESSAGE);
-			System.exit(1);
-		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(
-					null, "Unable to connect database...", "Connection Failed", JOptionPane.ERROR_MESSAGE);
-			System.exit(1);
-		}
-	}
-
-	// return connection
-	public Connection getConnection() {
-		return connection;
 	}
 }

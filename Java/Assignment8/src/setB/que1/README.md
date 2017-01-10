@@ -1,4 +1,4 @@
-# Que 1
+# Que1
 
 Write a menu driven program (Command line interface) to perform the following operations on student table.
 1. Insert

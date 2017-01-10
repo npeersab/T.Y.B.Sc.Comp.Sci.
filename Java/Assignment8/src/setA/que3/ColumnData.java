@@ -1,3 +1,5 @@
+package setA.que3;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -12,20 +14,20 @@ public class ColumnData {
 		try {
 			// load driver
 			Class.forName("org.postgresql.Driver");
-			
+
 			// create connection
 			connection = DriverManager.getConnection(
 					"jdbc:postgresql://localhost/studentdb", "postgres", "noor!xyz");
-			
+
 			// create statement
 			Statement statement = connection.createStatement();
-			
-			// get resultset
+
+			// get resultSet
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM student");
-			
-			// get data of resultset
+
+			// get data of resultSet
 			ResultSetMetaData metaData = resultSet.getMetaData();
-			
+
 			// display column details
 			int count = metaData.getColumnCount();
 			System.out.println("No. of Columns: " + count);
@@ -35,7 +37,7 @@ public class ColumnData {
 				System.out.println("Type: " + metaData.getColumnTypeName(i));
 				System.out.println("Display Size: " + metaData.getColumnDisplaySize(i));
 			}
-			
+
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error while loading drivers");
 		} catch (SQLException e) {
@@ -43,10 +45,11 @@ public class ColumnData {
 		} finally {
 			// close the connections
 			try {
-				connection.close();
+				if (connection != null)
+					connection.close();
 			} catch (SQLException e) {
 				JOptionPane.showMessageDialog(
-						null, "Unable to close connection database", "Database Error", JOptionPane.ERROR_MESSAGE);
+						null, "Unable to close connection", "Database Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
