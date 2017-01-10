@@ -1,4 +1,4 @@
-#Que 3
+# Que3
 
 Create an Applet which displays a message in the center of the screen. The message indicates
 the events taking place on the applet window. Handle events like mouse click, mouse moved,

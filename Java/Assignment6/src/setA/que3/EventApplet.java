@@ -1,3 +1,5 @@
+package setA.que3;
+
 import java.applet.Applet;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -19,50 +21,50 @@ public class EventApplet extends Applet implements MouseListener, KeyListener, M
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.insets = new Insets(0, 0, 0, 0);
 		gbc.gridx = gbc.gridy = 0;
-				
+
 		add(new JLabel("Key Clicked : "), gbc);
-		
+
 		gbc.gridy++;
 		add(new JLabel("Key Pressed : "), gbc);
-		
+
 		gbc.gridy++;
 		add(new JLabel("Key Released : "), gbc);
-		
+
 		gbc.gridy++;
 		add(new JLabel("Mouse Position : "), gbc);
-		
+
 		gbc.gridy++;
 		add(new JLabel("Mouse Location : "), gbc);
-		
+
 		gbc.gridy++;
 		add(new JLabel("Mouse Dragged : "), gbc);
-		
+
 		gbc.gridy = 0;
 		gbc.gridx++;
-		
+
 		keyClicked = new JLabel();
 		add(keyClicked, gbc);
-		
+
 		keyPressed = new JLabel();
 		gbc.gridy++;
 		add(keyPressed, gbc);
-		
+
 		keyReleased = new JLabel();
 		gbc.gridy++;
 		add(keyReleased, gbc);
-		
+
 		mousePosition = new JLabel();
 		gbc.gridy++;
 		add(mousePosition, gbc);
-		
+
 		mouseLocation = new JLabel();
 		gbc.gridy++;
 		add(mouseLocation, gbc);
-		
+
 		mouseDragged = new JLabel();
 		gbc.gridy++;
 		add(mouseDragged, gbc);
-					
+
 		setFocusable(true);
 		setSize(400, 400);
 		addMouseListener(this);
@@ -73,48 +75,48 @@ public class EventApplet extends Applet implements MouseListener, KeyListener, M
 	//@Override
 	public void mouseClicked(MouseEvent e) {
 		String labelText = null;
-		
+
 		if (e.getButton() == MouseEvent.BUTTON1)
 			labelText = "Right Key";
-		
+
 		if (e.getButton() == MouseEvent.BUTTON2)
 			labelText = "Middle Key";
-		
+
 		if (e.getButton() == MouseEvent.BUTTON3)
 			labelText = "Left Key";
-		
+
 		keyClicked.setText(labelText);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		String labelText = null;
-		
+
 		if (e.getButton() == MouseEvent.BUTTON1)
 			labelText = "Right Key";
-		
+
 		if (e.getButton() == MouseEvent.BUTTON2)
 			labelText = "Middle Key";
-		
+
 		if (e.getButton() == MouseEvent.BUTTON3)
 			labelText = "Left Key";
-		
+
 		keyPressed.setText(labelText);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		String labelText = null;
-		
+
 		if (e.getButton() == MouseEvent.BUTTON1)
 			labelText = "Right Key";
-		
+
 		if (e.getButton() == MouseEvent.BUTTON2)
 			labelText = "Middle Key";
-		
+
 		if (e.getButton() == MouseEvent.BUTTON3)
 			labelText = "Left Key";
-		
+
 		keyReleased.setText(labelText);
 		keyPressed.setText(null);
 	}

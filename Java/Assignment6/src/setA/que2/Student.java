@@ -1,3 +1,5 @@
+package setA.que2;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -25,76 +27,76 @@ public class Student extends JFrame implements ActionListener, ItemListener, Doc
 	JTextArea textArea;
 	private JCheckBox music, dance, sports;
 	private String studName = "---", studClass = "---", studHobbies = "---"; 
-	
+
 	public Student() {
 		panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
-		
+
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.gridx = gbc.gridy = 0;
 		gbc.insets = new Insets(0, 20, 10, 0);
-		
+
 		JLabel label = new JLabel("Your Name : ");
 		panel.add(label, gbc);
-		
+
 		gbc.insets = new Insets(0, 20, 0, 0);
-		
+
 		label = new JLabel("Your Class : ");
 		gbc.gridy++;
 		panel.add(label, gbc);
-				
+
 		fy = new JRadioButton("FY");
 		fy.setName("FY");
 		fy.addActionListener(this);
 		gbc.gridy++;
 		panel.add(fy, gbc);
-		
+
 		sy = new JRadioButton("SY");
 		sy.setName("SY");
 		sy.addActionListener(this);
 		gbc.gridy++;
 		panel.add(sy, gbc);
-		
+
 		ty = new JRadioButton("TY");
 		ty.setName("TY");
 		ty.addActionListener(this);
 		gbc.gridy++;
 		panel.add(ty, gbc);
-		
+
 		buttonGroup = new ButtonGroup();
 		buttonGroup.add(fy);
 		buttonGroup.add(sy);
 		buttonGroup.add(ty);
-		
+
 		gbc.insets = new Insets(20, 20, 0, 0);
-		
+
 		textArea = new JTextArea("Name : " + studName + "\nClass : " + studClass + "\nHobbies : " + studHobbies);
 		textArea.setEditable(false);
 		gbc.gridy++;
 		gbc.gridwidth = GridBagConstraints.REMAINDER;
 		panel.add(textArea, gbc);
-		
+
 		gbc.insets = new Insets(0, 20, 10, 0);
 		gbc.gridx++;
-				
+
 		nameTextField = new JTextField();
 		nameTextField.getDocument().addDocumentListener(this);
 		gbc.gridy = 0;
 		panel.add(nameTextField, gbc);
-		
+
 		gbc.insets = new Insets(0, 20, 0, 0);
-		
+
 		label = new JLabel("Your Hobbies : ");
 		gbc.gridy++;
 		panel.add(label, gbc);
-		
+
 		music = new JCheckBox("Music");
 		music.setName("Music");
 		music.addItemListener(this);
 		gbc.gridy++;
 		panel.add(music, gbc);
-		
+
 		dance = new JCheckBox("Dance");
 		dance.setName("Dance");
 		dance.addItemListener(this);
@@ -114,13 +116,13 @@ public class Student extends JFrame implements ActionListener, ItemListener, Doc
 		setSize(400, 400);
 		setVisible(true);
 	}
-	
+
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		JCheckBox obj = (JCheckBox) e.getSource();
-		
+
 		if (e.getStateChange() == ItemEvent.SELECTED) {
-			
+
 			addtHobbies(obj.getName());
 		}
 		if (e.getStateChange() == ItemEvent.DESELECTED) {
@@ -131,7 +133,7 @@ public class Student extends JFrame implements ActionListener, ItemListener, Doc
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
-		
+
 		if (obj instanceof JRadioButton) {
 			JRadioButton jRadioButton = (JRadioButton) obj;
 			studClass = jRadioButton.getName();
@@ -153,28 +155,28 @@ public class Student extends JFrame implements ActionListener, ItemListener, Doc
 	public void changedUpdate(DocumentEvent e) {
 		setName(nameTextField.getText());
 	}
-	
+
 	public void updateText() {
 		textArea.setText("Name : " + studName + "\nClass : " + studClass + "\nHobbies : " + studHobbies);
 	}
-	
+
 	public void setName(String studName) {
 		this.studName = studName;
 		updateText();
 	}
-	
+
 	public void setClass(String studClass) {
 		this.studClass = studClass;
 		updateText();
 	}
-	
+
 	public void addtHobbies(String studHobbies) {
 		this.studHobbies = this.studHobbies.replace("---", "");
 		this.studHobbies += " " + studHobbies;
 		this.studHobbies = this.studHobbies.trim();
 		updateText();
 	}
-	
+
 	public void removeHobbies(String studHobbies) {
 		this.studHobbies = this.studHobbies.replace(studHobbies, "");
 		this.studHobbies = this.studHobbies.trim();
@@ -183,7 +185,7 @@ public class Student extends JFrame implements ActionListener, ItemListener, Doc
 		}
 		updateText();
 	}
-	
+
 	public static void main(String[] args) {
 		new Student();
 	}
