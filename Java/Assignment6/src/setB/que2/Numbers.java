@@ -26,7 +26,7 @@ public class Numbers extends JFrame implements ActionListener {
 			operationString[] = {"Search", "Sort"},
 			sortString[] = {"Ascending", "Descending"};
 	private JTextArea textArea;
-	private int[] numbers = new int[50];
+	private int[] numbers;
 	private final int maxSize = 50;
 
 	public Numbers() {
@@ -165,6 +165,8 @@ public class Numbers extends JFrame implements ActionListener {
 
 	// generate random numbers and display in textarea 
 	public void load() {
+		numbers = new int[50];
+		
 		// generate random numbers
 		Random random = new Random();
 		for (int i = 0; i < maxSize; i++) {
@@ -248,19 +250,27 @@ public class Numbers extends JFrame implements ActionListener {
 
 	// set numbers in ascending order
 	private void ascending() {
-		numbers = getSortedAscending();
-		textArea.setText(toString());
+		if (numbers != null) {
+			numbers = getSortedAscending();
+			textArea.setText(toString());
+		}
 	}
 
 	// set numbers in descending order
 	private void descending() {
-		numbers = getSortedDescending();
-		textArea.setText(toString());
+		if (numbers != null) {
+			numbers = getSortedDescending();
+			textArea.setText(toString());
+		}
 	}
 
 	// return numbers in string format
 	public String toString() {
+		if (numbers == null)
+			return " ";
+		
 		StringBuffer buffer = new StringBuffer();
+		
 		for(int n : numbers)
 			buffer.append(n + " ");
 
