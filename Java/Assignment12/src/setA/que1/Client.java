@@ -11,6 +11,7 @@ public class Client {
 			socket = new Socket("localhost", 4242);
 			DataInputStream inputStream = new DataInputStream(socket.getInputStream());
 			System.out.println(inputStream.readUTF());
+			inputStream.close();
 		} catch (IOException e) {
 			System.out.println("Unable to establish connection");
 		} finally {

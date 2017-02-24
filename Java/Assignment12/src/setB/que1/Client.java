@@ -29,6 +29,8 @@ public class Client {
 			for (int i = 0; i < n; i++)
 				System.out.println(inputStream.readUTF());
 
+			inputStream.close();
+			outputStream.close();
 		} catch (IOException e) {
 			System.out.println("Unable to create connection");
 		}

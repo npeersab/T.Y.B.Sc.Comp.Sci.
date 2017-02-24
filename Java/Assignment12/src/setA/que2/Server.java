@@ -38,6 +38,9 @@ public class Server {
 					outputStream.writeUTF("Error: File not found");
 				}
 				outputStream.writeUTF("EOF");
+				
+				inputStream.close();
+				outputStream.close();
 			}
 		} catch (IOException e) {
 			System.out.println("Unable establish connection");

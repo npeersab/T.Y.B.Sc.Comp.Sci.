@@ -21,6 +21,8 @@ public class Client {
 			while (!(buff = inputStream.readUTF()).equals("EOF"))
 				System.out.println(buff);
 			scanner.close();
+			inputStream.close();
+			outputStream.close();
 		} catch (IOException e) {
 			System.out.println("Unable to establish connection");
 		} finally {

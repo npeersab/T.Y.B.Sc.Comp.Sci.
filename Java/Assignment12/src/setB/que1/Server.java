@@ -36,8 +36,10 @@ public class Server {
 
 					outputStream.writeUTF(files[i] + ": " + status);
 				}
+				inputStream.close();
+				outputStream.close();
 			}
-
+			
 		} catch (IOException e) {
 			System.out.println("Unable to establish connection");
 		}

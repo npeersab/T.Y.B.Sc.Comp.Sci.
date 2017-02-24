@@ -15,6 +15,7 @@ public class Server {
 			Socket socket = serverSocket.accept();
 			DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
 			outputStream.writeUTF("Server time: " + (new Date()).toString());
+			outputStream.close();
 		} catch (IOException e) {
 			System.out.println("Unable to establish connection");
 		} finally {

@@ -21,6 +21,7 @@ public class Client {
 					break;
 			}
 			scanner.close();
+			outputStream.close();
 		} catch (IOException e) {
 			System.out.println("Unable to establish connection");
 		}

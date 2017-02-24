@@ -23,6 +23,7 @@ public class Server {
 					System.out.println(buff);
 				
 				System.out.println("Client disconnected\n");
+				inputStream.close();
 			}
 		} catch (IOException e) {
 			System.out.println("Unable to establish connection");
