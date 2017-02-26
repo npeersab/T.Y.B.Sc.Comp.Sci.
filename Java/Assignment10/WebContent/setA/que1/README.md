@@ -1,6 +1,7 @@
 # Que1
 
 Write a Program to make use of following JSP implicit objects:
+
 i. out: To display current Date and Time.
 ii. request: To get header information.
 iii. response: To Add Cookie
