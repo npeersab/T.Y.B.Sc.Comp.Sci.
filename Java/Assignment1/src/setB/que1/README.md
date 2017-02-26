@@ -1,6 +1,7 @@
 #Que1
 
 Write a java program to display the system date and time in various formats shown below:
+
 	Current date is : 31/07/2015
 	Current date is : 07-31-2015
 	Current date is : Friday July 31 2015
