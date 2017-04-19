@@ -61,20 +61,20 @@ public class Phone {
 			System.out.println("3. Exit");
 			System.out.print("Enter choice : ");
 
-			Scanner ip = new Scanner(System.in);
-			int choice = ip.nextInt();
+			Scanner scanner = new Scanner(System.in);
+			int choice = scanner.nextInt();
 
 			switch (choice) {
 			case 1 :
 				System.out.print("\nEnter name : ");
-				searchContact(ip.next());
+				searchContact(scanner.next());
 				break;
 
 			case 2 :
 				System.out.print("\nEnter name : ");
-				String name = ip.next();
+				String name = scanner.next();
 				System.out.print("Enter number : ");
-				String number = ip.next();
+				String number = scanner.next();
 				addContact(name, number);
 				break;
 
@@ -83,7 +83,7 @@ public class Phone {
 
 			default :
 				System.out.println("Invalid Input");
-				ip.close();
+				scanner.close();
 			}
 		} while (true);
 	}

@@ -4,8 +4,8 @@ public class InvalidDateException extends Exception {
 	private static final long serialVersionUID = 1L;
 	MyDate date;
 
-	public InvalidDateException(MyDate d) {
-		date = d;
+	public InvalidDateException(MyDate date) {
+		this.date = date;
 	}	
 
 	void displayError() {

@@ -18,40 +18,40 @@ class Student {
 
 	// accept marks of SY from user
 	void setSYMarks() {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("Computer    : ");
-		int comp = ip.nextInt();
+		int comp = scanner.nextInt();
 		System.out.print("Maths       : ");
-		int maths = ip.nextInt();
+		int maths = scanner.nextInt();
 		System.out.print("Electronics : ");
-		int elec = ip.nextInt();
+		int elec = scanner.nextInt();
 		System.out.print("English     : ");
-		int en = ip.nextInt();
+		int en = scanner.nextInt();
 
 		syMarks = new SyMarks(comp, maths, elec, en);
-		ip.close();
+		scanner.close();
 	}
 
 	// accept marks of TY from user
 	void setTYMarks() {
-		Scanner ip = new Scanner(System.in);		
+		Scanner scanner = new Scanner(System.in);		
 
 		System.out.print("PHP    : ");
-		int php = ip.nextInt();
+		int php = scanner.nextInt();
 		System.out.print("Java   : ");
-		int java = ip.nextInt();
+		int java = scanner.nextInt();
 		System.out.print("OOSE   : ");
-		int oose = ip.nextInt();
+		int oose = scanner.nextInt();
 		System.out.print("CN     : ");
-		int cn = ip.nextInt();
+		int cn = scanner.nextInt();
 		System.out.print("SYSPRO : ");
-		int syspro = ip.nextInt();
+		int syspro = scanner.nextInt();
 		System.out.print("TCS    : ");
-		int tcs = ip.nextInt();
+		int tcs = scanner.nextInt();
 
 		tyMarks = new TyMarks(php, java, oose, cn, syspro, tcs);
-		ip.close();
+		scanner.close();
 	}
 
 	// display student details
@@ -91,10 +91,10 @@ class Student {
 	}
 
 	public static void main(String args[]) {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("How many students : ");
-		int n = ip.nextInt();
+		int n = scanner.nextInt();
 
 		Student student[] = new Student[n];
 		int rno;
@@ -102,9 +102,9 @@ class Student {
 
 		for (int i = 0; i < n; i++) {
 			System.out.print("\nEnter roll No : ");
-			rno = ip.nextInt();
+			rno = scanner.nextInt();
 			System.out.print("Enter name : ");
-			name = ip.next();
+			name = scanner.next();
 			student[i] = new Student(rno, name);
 
 			System.out.println("\nEnter SY Marks :");
@@ -114,6 +114,6 @@ class Student {
 		}
 		Student.display(student);
 		
-		ip.close();
+		scanner.close();
 	}
 }		

@@ -6,16 +6,16 @@ public class MyDate {
 	int day, month, year;
 
 	public MyDate() {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.println("Enter date :");
 		System.out.print("Day (dd) : ");
-		day = ip.nextInt();
+		day = scanner.nextInt();
 		System.out.print("Month (mm) : ");
-		month = ip.nextInt();
+		month = scanner.nextInt();
 		System.out.print("Year (yyyy) : ");
-		year = ip.nextInt();
-		ip.close();
+		year = scanner.nextInt();
+		scanner.close();
 	}
 
 	public String toString() {

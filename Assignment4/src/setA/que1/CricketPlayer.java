@@ -8,17 +8,17 @@ public class CricketPlayer {
 	double bat_avg;
 
 	public CricketPlayer() {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("\nName : ");
-		name = ip.next();
+		name = scanner.next();
 		System.out.print("No of innings : ");
-		no_of_innings = ip.nextInt();
+		no_of_innings = scanner.nextInt();
 		System.out.print("No of times not out : ");
-		no_times_notout = ip.nextInt();
+		no_times_notout = scanner.nextInt();
 		System.out.print("Total runs : ");
-		total_runs = ip.nextInt();
-		ip.close();
+		total_runs = scanner.nextInt();
+		scanner.close();
 	}
 
 	public static void CalculateBattingAverage(CricketPlayer player[]) {
@@ -28,12 +28,12 @@ public class CricketPlayer {
 			}
 			catch (ArithmeticException ae) {
 				if(player[i].no_of_innings == 0) {
-					Scanner ip = new Scanner(System.in);
+					Scanner scanner = new Scanner(System.in);
 					System.out.println("player " + (i + 1) + " has 0 no of innings :");
 					System.out.print("Enter no of innings : ");
-					player[i].no_of_innings = ip.nextInt();
+					player[i].no_of_innings = scanner.nextInt();
 					i--;
-					ip.close();
+					scanner.close();
 				}
 			}
 		}
@@ -65,10 +65,10 @@ public class CricketPlayer {
 	} 
 
 	public static void main(String args[]) {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("How many players ? : ");
-		int n = ip.nextInt();
+		int n = scanner.nextInt();
 		CricketPlayer player[] = new CricketPlayer[n];
 
 		System.out.println("Enter player info : ");
@@ -78,7 +78,7 @@ public class CricketPlayer {
 		CricketPlayer.CalculateBattingAverage(player);
 		CricketPlayer.sortPlayer(player);
 		CricketPlayer.display(player);
-		ip.close();
+		scanner.close();
 	}
 }
 

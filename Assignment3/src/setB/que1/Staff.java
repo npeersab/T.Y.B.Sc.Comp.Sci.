@@ -5,13 +5,13 @@ import java.util.Scanner;
 public abstract class Staff {
 	protected String name, address;
 	public Staff() {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("Name : ");
-		name = ip.next();
+		name = scanner.next();
 		System.out.print("Address : ");
-		address = ip.next();
-		ip.close();
+		address = scanner.next();
+		scanner.close();
 	}
 
 	public String toString() {
@@ -21,16 +21,16 @@ public abstract class Staff {
 	public abstract void display();
 
 	public static void main(String args[]) {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("Enter limit for Staff : ");
-		int n = ip.nextInt();
+		int n = scanner.nextInt();
 		Staff staff[] = new Staff[n];
 
 		for (int i = 0; i < n; i++) {
 			System.out.println("\nEnter Staff " + (i + 1) + " Data :");
 			System.out.print("1.Full Time Staff\n2.Part Time Staff\nEnter Staff Type : ");
-			int stType = ip.nextInt();
+			int stType = scanner.nextInt();
 			switch(stType) {
 			case 1 :
 				staff[i] = new FullTimeStaff();
@@ -52,7 +52,7 @@ public abstract class Staff {
 			if(staff[i] instanceof PartTimeStaff)
 				staff[i].display();
 
-		ip.close();
+		scanner.close();
 	}
 }
 
@@ -62,12 +62,12 @@ class FullTimeStaff extends Staff {
 
 	public FullTimeStaff() {
 		super();
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		System.out.print("Department : ");
-		department = ip.next();
+		department = scanner.next();
 		System.out.print("Salary : ");
-		salary = ip.nextInt();
-		ip.close();
+		salary = scanner.nextInt();
+		scanner.close();
 	}
 
 	public void display() {
@@ -81,12 +81,12 @@ class PartTimeStaff extends Staff {
 
 	public PartTimeStaff() {
 		super();
-		Scanner ip = new Scanner(System.in);	
+		Scanner scanner = new Scanner(System.in);	
 		System.out.print("No of Hours : ");
-		noOfHours = ip.nextInt();
+		noOfHours = scanner.nextInt();
 		System.out.print("Rate per hour : ");
-		ratePerHour = ip.nextInt();
-		ip.close();
+		ratePerHour = scanner.nextInt();
+		scanner.close();
 	}
 
 	public void display() {

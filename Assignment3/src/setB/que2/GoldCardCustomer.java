@@ -12,8 +12,8 @@ public class GoldCardCustomer extends SilverCardCustomer {
 	public void increaseLimit() {
 		if(incCount < 3) {
 			System.out.print("Enter amount : ");
-			Scanner ip = new Scanner(System.in);
-			int amount = ip.nextInt();
+			Scanner scanner = new Scanner(System.in);
+			int amount = scanner.nextInt();
 			if(amount <= 5_000) {
 				System.out.println("Credit Limit Increased by " + amount);
 				System.out.println("New Limit : " + (creditLimit += amount));
@@ -22,7 +22,7 @@ public class GoldCardCustomer extends SilverCardCustomer {
 			else
 				System.out.println("Credit Limit cannot be increased by more 5,000");
 			
-			ip.close();
+			scanner.close();
 		}
 		else
 			System.out.println("Cannot increase Credit Limit more than 3 Times");

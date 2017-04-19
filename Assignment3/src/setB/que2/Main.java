@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String args[]) {
 		System.out.print("1.Silver Card Customer\n2.Gold Card Customer\nEnter choice : ");
-		Scanner ip = new Scanner(System.in);
-		int choice = ip.nextInt();
+		Scanner scanner = new Scanner(System.in);
+		int choice = scanner.nextInt();
 		CreditCardInterface customer = new SilverCardCustomer();
 		if(choice == 1)
 			customer = new SilverCardCustomer();
@@ -16,7 +16,7 @@ public class Main {
 		boolean flag = true;
 		while(flag) {
 			System.out.print("\n1.Use Card\n2.Pay Credit\n3.View Credit Amount\n4.Increase Credit Limit\n5.Exit\nEnter your choice : ");
-			choice = ip.nextInt();
+			choice = scanner.nextInt();
 			switch(choice) {
 			case 1 :
 				customer.useCard();
@@ -34,6 +34,6 @@ public class Main {
 				flag = false;
 			}
 		}
-		ip.close();
+		scanner.close();
 	}
 }

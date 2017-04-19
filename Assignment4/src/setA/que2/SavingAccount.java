@@ -7,25 +7,25 @@ public class SavingAccount {
 	String name;
 
 	public SavingAccount() {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("Enter ac no : ");
-		setAcNo(ip.nextInt());
+		setAcNo(scanner.nextInt());
 		System.out.print("Enter name : ");
-		name = ip.next();
+		name = scanner.next();
 		balance = 500;
-		ip.close();
+		scanner.close();
 	}
 
 	public void withdraw() {
-		Scanner ip = new Scanner(System.in);		
+		Scanner scanner = new Scanner(System.in);		
 
 		System.out.print("Enter amount : ");
-		int amt = ip.nextInt();
+		int amt = scanner.nextInt();
 
 		try {
 			if(balance - amt < 500) {
-				ip.close();
+				scanner.close();
 				throw new InsufficientFundsException("Your Balance is : " + balance);
 			}
 			else {
@@ -37,18 +37,18 @@ public class SavingAccount {
 		catch (InsufficientFundsException ife) {
 			ife.displayMessage();			
 		}
-		ip.close();
+		scanner.close();
 	}
 
 	public void deposit() {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("Enter amount : ");
-		int amt = ip.nextInt();	
+		int amt = scanner.nextInt();	
 		balance += amt;
 		System.out.println(amt + " deposited to account");
 		viewBalance();
-		ip.close();
+		scanner.close();
 	}	
 
 	public void viewBalance() {
@@ -58,11 +58,11 @@ public class SavingAccount {
 	public static void main(String args[]) {
 		SavingAccount account = new SavingAccount();
 
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		boolean flag = true;
 		while(flag) {
 			System.out.print("\n1.Withdraw\n2.Deposit\n3.View Balance\n4.Exit\nEnter Choice : ");
-			int choice = ip.nextInt();
+			int choice = scanner.nextInt();
 
 			switch (choice) {
 			case 1 :
@@ -78,7 +78,7 @@ public class SavingAccount {
 				flag = false;
 			}
 		}
-		ip.close();
+		scanner.close();
 	}
 
 	public int getAcNo() {

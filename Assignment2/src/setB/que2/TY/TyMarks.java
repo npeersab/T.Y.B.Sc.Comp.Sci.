@@ -5,13 +5,13 @@ public class TyMarks {
 	private int php, java, oose, cn, syspro, tcs;
 
 	// parameterized constructor
-	public TyMarks(int p, int j, int o, int c, int s, int t) {
-		php = p;
-		java = j;
-		oose = o;
-		cn = c;
-		syspro = s;
-		tcs = t;
+	public TyMarks(int php, int java, int oose, int cn, int syspro, int tcs) {
+		this.php = php;
+		this.java = java;
+		this.oose = oose;
+		this.cn = cn;
+		this.syspro = syspro;
+		this.tcs = tcs;
 	}
 
 	// return total marks

@@ -12,29 +12,29 @@ public class SilverCardCustomer implements CreditCardInterface {
 	}
 
 	public void useCard() {
-		Scanner ip = new Scanner(System.in);		
+		Scanner scanner = new Scanner(System.in);		
 
 		System.out.print("Enter amount : ");
-		int amt = ip.nextInt();
+		int amt = scanner.nextInt();
 
 		if(amt + creditAmount > creditLimit)
 			System.out.println("Transaction failed : Credit Limit Exceed");
 		else
 			creditAmount += amt;
-		ip.close();
+		scanner.close();
 	}
 
 	public void payCredit() {
 		viewCreditAmount();
 		System.out.print("Enter amount to be paid : ");
-		Scanner ip = new Scanner(System.in);
-		int amt = ip.nextInt();
+		Scanner scanner = new Scanner(System.in);
+		int amt = scanner.nextInt();
 		if(creditAmount < amt)
 			System.out.println("Amount to be paid should be less than credit amount");
 		else
 			creditAmount -= amt;
 		viewCreditAmount();
-		ip.close();
+		scanner.close();
 	}
 
 	public void increaseLimit() {

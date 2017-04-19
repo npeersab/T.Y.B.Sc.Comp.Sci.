@@ -11,26 +11,26 @@ class Employee {
 	}
 
 	// parameterized constructor
-	Employee(String i, String nm, String dp, float sal) {
-		id = i;
-		name = nm;
-		dept = dp;
-		salary = sal;
+	Employee(String id, String name, String dept, float salary) {
+		this.id = id;
+		this.name = name;
+		this.dept = dept;
+		this.salary = salary;
 	}
 
 	// accept employee details
 	public void acceptEmployee() {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("\nEnter id : ");
-		id = ip.next();
+		id = scanner.next();
 		System.out.print("Enter name : ");
-		name = ip.next();
+		name = scanner.next();
 		System.out.print("Enter Department : ");
-		dept = ip.next();
+		dept = scanner.next();
 		System.out.print("Enter salary : ");
-		salary = ip.nextFloat();
-		ip.close();
+		salary = scanner.nextFloat();
+		scanner.close();
 	}
 
 	// display employee details
@@ -62,12 +62,12 @@ class Manager extends Employee {
 
 	// accept manager details
 	public void acceptManager() {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		acceptEmployee();
 		System.out.print("Enter bonus : ");
-		bonus = ip.nextFloat();
-		ip.close();
+		bonus = scanner.nextFloat();
+		scanner.close();
 	}
 
 	// display manager details

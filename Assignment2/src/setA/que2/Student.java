@@ -62,21 +62,21 @@ public class Student {
 
 	public static void main(String args[]) {
 		boolean flag = true;
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		Student student[] = new Student[50];
 
 		while (flag) {
 			System.out.print("\n1.Add new Student\n2.View all students\n3.Sort Student By Percentage\n4.Exit\nEnter option : ");
-			int choice = ip.nextInt();
+			int choice = scanner.nextInt();
 
 			switch (choice) {
 			case 1 :
 				System.out.print("\nEnter roll No : ");
-				int r = ip.nextInt();
+				int r = scanner.nextInt();
 				System.out.print("Enter name : ");
-				String n = ip.next();
+				String n = scanner.next();
 				System.out.print("Enter percentage : ");
-				float f = ip.nextFloat();
+				float f = scanner.nextFloat();
 
 				student[Student.count] = new Student(r, n, f);
 				break;
@@ -94,6 +94,6 @@ public class Student {
 				flag = false;
 			}
 		}
-		ip.close();
+		scanner.close();
 	}
 }

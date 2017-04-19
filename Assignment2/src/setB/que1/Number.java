@@ -7,10 +7,10 @@ import setB.que1.Series.Square;
 
 public class Number {
 	public static void main(String args[]) {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		
 		System.out.print("Enter limit for series : ");
-		int n = ip.nextInt();
+		int n = scanner.nextInt();
 
 		System.out.println("\nPrime numbers :");
 		Prime.displayPrime(n);
@@ -20,6 +20,6 @@ public class Number {
 		Square.displaySquare(n);
 		System.out.println();
 		
-		ip.close();
+		scanner.close();
 	}
 }

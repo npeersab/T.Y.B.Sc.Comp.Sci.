@@ -9,10 +9,10 @@ public abstract class Shape {
 	abstract void calcVolume();
 
 	public static void main(String args[]) {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("\n1.Sphere\n2.Cone\n3.Cylinder\n4.Box\nEnter Shape : ");
-		int choice = ip.nextInt();
+		int choice = scanner.nextInt();
 		Shape shape = null;
 		switch(choice) {
 		case 1 :
@@ -33,7 +33,7 @@ public abstract class Shape {
 
 		shape.calcArea();
 		shape.calcVolume();
-		ip.close();
+		scanner.close();
 	}
 }
 
@@ -41,10 +41,10 @@ class Sphere extends Shape {
 	private int rad;
 
 	public Sphere() {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		System.out.print("Enter radius : ");
-		rad = ip.nextInt();
-		ip.close();
+		rad = scanner.nextInt();
+		scanner.close();
 	}
 
 	public void calcArea() {
@@ -60,13 +60,13 @@ class Cone extends Shape {
 	private int rad, hei;
 
 	public Cone() {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("Enter radius : ");
-		rad = ip.nextInt();
+		rad = scanner.nextInt();
 		System.out.print("Enter height : ");
-		hei = ip.nextInt();
-		ip.close();
+		hei = scanner.nextInt();
+		scanner.close();
 	}
 
 	public void calcArea() {
@@ -82,13 +82,13 @@ class Cylinder extends Shape {
 	private int rad, hei;
 
 	public Cylinder() {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("Enter radius : ");
-		rad = ip.nextInt();	
+		rad = scanner.nextInt();	
 		System.out.print("Enter height : ");
-		hei = ip.nextInt();
-		ip.close();
+		hei = scanner.nextInt();
+		scanner.close();
 	}
 
 	public void calcArea() {
@@ -104,15 +104,15 @@ class Box extends Shape {
 	private int len, bre, hei;
 
 	public Box() {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("Enter length : ");
-		len = ip.nextInt();
+		len = scanner.nextInt();
 		System.out.print("Enter breadth : ");
-		bre = ip.nextInt();
+		bre = scanner.nextInt();
 		System.out.print("Enter height : ");
-		hei = ip.nextInt();		
-		ip.close();
+		hei = scanner.nextInt();		
+		scanner.close();
 	}
 
 	public void calcArea() {

@@ -10,13 +10,13 @@ public abstract class Vehicle {
 	abstract public void display();
 
 	public void acceptVehicle() {
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("\nEnter company : ");
-		company = ip.next();
+		company = scanner.next();
 		System.out.print("Enter price : ");
-		price = ip.nextFloat();
-		ip.close();
+		price = scanner.nextFloat();
+		scanner.close();
 	}
 
 	public void displayVehicle() {
@@ -27,14 +27,14 @@ public abstract class Vehicle {
 	public static void main(String args[]) {
 		System.out.print("How many Vehicles ? : ");
 
-		Scanner ip = new Scanner(System.in);
-		int n = ip.nextInt();
+		Scanner scanner = new Scanner(System.in);
+		int n = scanner.nextInt();
 
 		Vehicle vehicle[] = new Vehicle[n];
 
 		for (int i = 0; i < n; i++) {
 			System.out.print("\n1.Light Motor Vehicle\n2.Heavy Motor Vehicle\nEnter Choice : ");
-			int choice = ip.nextInt();
+			int choice = scanner.nextInt();
 
 			switch(choice) {
 
@@ -51,7 +51,7 @@ public abstract class Vehicle {
 		System.out.println("\nVehicle Details :\n");
 		for(int i = 0; i < n; i++)
 			vehicle[i].display();
-		ip.close();
+		scanner.close();
 	}
 }
 
@@ -60,11 +60,11 @@ class LightMotorVehicle extends Vehicle {
 
 	public void accept() {
 		acceptVehicle();
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("Enter mileage : ");
-		mileage = ip.nextFloat();
-		ip.close();
+		mileage = scanner.nextFloat();
+		scanner.close();
 	}
 
 	public void display() {
@@ -78,11 +78,11 @@ class HeavyMotorVehicle extends Vehicle {
 
 	public void accept() {
 		acceptVehicle();
-		Scanner ip = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("Enter Capacity (in tons) : ");
-		capacity = ip.nextFloat();
-		ip.close();
+		capacity = scanner.nextFloat();
+		scanner.close();
 	}
 
 	public void display() {
